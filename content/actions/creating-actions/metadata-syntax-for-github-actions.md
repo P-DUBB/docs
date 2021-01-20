@@ -1,22 +1,4 @@
----
-title: Metadata syntax for GitHub Actions
-shortTitle: Metadata syntax
-intro: You can create actions to perform tasks in your repository. Actions require a metadata file that uses YAML syntax.
-product: '{% data reusables.gated-features.actions %}'
-redirect_from:
-  - /articles/metadata-syntax-for-github-actions
-  - /github/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
-  - /actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
-  - /actions/building-actions/metadata-syntax-for-github-actions
-versions:
-  free-pro-team: '*'
-  enterprise-server: '>=2.22'
-type: 'reference'
----
-
-{% data reusables.actions.enterprise-beta %}
-{% data reusables.actions.enterprise-github-hosted-runners %}
-
+*(format 33.1655 reuse)_
 ### About YAML syntax for {% data variables.product.prodname_actions %}
 
 Docker and JavaScript actions require a metadata file. The metadata filename must be either `action.yml` or `action.yaml`. The data in the metadata file defines the inputs, outputs and main entrypoint for your action.
@@ -227,7 +209,27 @@ Alternatively, you can use `$GITHUB_ACTION_PATH`:
 runs:
   using: "composite"
   steps:
-    - run: $GITHUB_ACTION_PATH/script.sh
+    - run:. .]_# Hello world docker action
+
+This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+
+## Inputs
+
+### `who-to-greet`
+
+**Required** The name of the person to greet. Default `"World"`.
+
+## Outputs
+
+### `time`
+
+The time we greeted you.
+
+## Example usage
+
+uses: actions/hello-world-docker-action@v1
+with:
+  who-to-greet: 'Mona the Octocat'
       shell: bash
 ```
 
